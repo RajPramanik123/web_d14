@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password</title>
+    <style>
+        .weak {
+            color: red;
+        }
+        .medium {
+            color: orange;
+        }
+        .strong {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="passwordcheck(event)">
+        <label for="password">Password:</label>
+        <input type="password" id="password">
+        <button type="submit">Submit</button>
+        <span id="passwordStrength"></span>
+    </form>
+
+    <script>
+        function passwordcheck(event) {
+            event.preventDefault(); 
+            
+            const passwordInput = document.getElementById('password').value;
+            const passwordStrength = document.getElementById('passwordStrength');
+
+            if (passwordInput.length < 6) {
+                passwordStrength.textContent = 'Password weak';
+                passwordStrength.className = 'weak';
+            } else if (passwordInput.length < 8) {
+                passwordStrength.textContent = 'Password is Medium';
+                passwordStrength.className = 'medium';
+            } else {
+                passwordStrength.textContent = 'Password Strong';
+                passwordStrength.className = 'strong';
+            }
+        }
+    </script>
+</body>
+</html>
